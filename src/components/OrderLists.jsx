@@ -10,10 +10,6 @@ import {
   ChevronDown 
 } from 'lucide-react';
 
-/**
- * REUSABLE FILTER MODAL
- * Matches the "Select Status" UI from your screenshot
- */
 const FilterModal = ({ label, options, onApply, currentSelection = [] }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [tempSelection, setTempSelection] = useState(currentSelection);
@@ -80,9 +76,6 @@ const FilterModal = ({ label, options, onApply, currentSelection = [] }) => {
   );
 };
 
-/**
- * MAIN PAGE COMPONENT
- */
 const OrderLists = () => {
   const initialOrders = [
     { id: "00001", name: "Christine Brooks", address: "089 Kutch Green Apt. 448", date: "04 Sep 2019", type: "Electric", status: "Completed" },
@@ -123,15 +116,13 @@ const OrderLists = () => {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-3xl font-bold text-[#202224]">Order Lists</h2>
+      <h2 className="text-start text-3xl font-bold text-[#202224]">Order Lists</h2>
 
-      {/* Filter Bar */}
       <div className="bg-white p-4 rounded-xl border border-gray-100 flex flex-wrap items-center gap-4 shadow-sm">
         <div className="p-2 border border-gray-100 rounded-lg text-gray-400"><Filter size={20} /></div>
         <div className="flex items-center gap-2 font-bold text-sm text-[#202224] pr-4 border-r border-gray-100">Filter By</div>
 
         <div className="flex flex-wrap items-center gap-3 flex-1">
-          {/* Date Picker Filter */}
           <div className="relative">
             <div className="absolute left-3 top-1/2 -translate-y-1/2 z-10 text-gray-400 pointer-events-none">
               <CalendarIcon size={16} />
@@ -166,7 +157,6 @@ const OrderLists = () => {
         </div>
       </div>
 
-      {/* Table Section */}
       <div className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
@@ -198,7 +188,6 @@ const OrderLists = () => {
         </div>
       </div>
 
-      {/* Pagination */}
       <div className="flex justify-between items-center py-2">
         <p className="text-sm text-gray-400 font-bold uppercase tracking-wider">Showing 1-{filteredOrders.length} of {initialOrders.length}</p>
         <div className="flex items-center border border-gray-200 rounded-lg bg-white shadow-sm overflow-hidden">

@@ -6,7 +6,6 @@ const FilterModal = ({ label, options, onApply, currentSelection = [] }) => {
   const [tempSelection, setTempSelection] = useState(currentSelection);
   const modalRef = useRef(null);
 
-  // Sync temp state with actual selection when modal opens
   useEffect(() => {
     if (isOpen) setTempSelection(currentSelection);
   }, [isOpen, currentSelection]);
@@ -35,17 +34,14 @@ const FilterModal = ({ label, options, onApply, currentSelection = [] }) => {
         <ChevronDown size={16} className={`text-gray-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
-      {/* Modal Dropdown */}
       {isOpen && (
         <>
-          {/* Close on Backdrop Click */}
           <div className="fixed inset-0 z-10" onClick={() => setIsOpen(false)} />
           
           <div className="absolute top-12 left-0 w-[400px] bg-white rounded-2xl border border-gray-100 shadow-2xl z-20 overflow-hidden">
             <div className="p-6">
               <h3 className="text-lg font-bold text-[#202224] mb-5">Select {label}</h3>
               
-              {/* Option Pills */}
               <div className="flex flex-wrap gap-3 mb-8">
                 {options.map((opt) => {
                   const isActive = tempSelection.includes(opt);
@@ -64,7 +60,6 @@ const FilterModal = ({ label, options, onApply, currentSelection = [] }) => {
                 })}
               </div>
 
-              {/* Modal Footer */}
               <div className="pt-5 border-t border-gray-50">
                 <p className="text-xs text-gray-400 italic mb-6">
                   *You can choose multiple {label.toLowerCase()}

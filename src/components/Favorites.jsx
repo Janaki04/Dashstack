@@ -14,9 +14,8 @@ const Favorites = () => {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-3xl font-bold text-[#202224]">Favorites</h2>
+      <h2 className="text-start text-3xl font-bold text-[#202224]">Favorites</h2>
       
-      {/* 3-Column Grid for Desktop, 1 for Mobile */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {favoriteItems.map((item) => (
           <FavoriteCard key={item.id} item={item} />
@@ -29,7 +28,6 @@ const Favorites = () => {
 const FavoriteCard = ({ item }) => {
   return (
     <div className="bg-white rounded-[24px] p-5 border border-gray-100 shadow-sm hover:shadow-md transition-all group">
-      {/* Image Preview Area */}
       <div className="relative bg-[#F9FAFB] rounded-2xl p-6 mb-4 flex justify-center items-center h-64 overflow-hidden">
         <img 
           src={item.image} 
@@ -37,7 +35,6 @@ const FavoriteCard = ({ item }) => {
           className="max-h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-500"
         />
         
-        {/* Navigation Arrows */}
         <button className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 border rounded-full flex items-center justify-center shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
           <ChevronLeft size={16} className="text-gray-400" />
         </button>
@@ -46,21 +43,18 @@ const FavoriteCard = ({ item }) => {
         </button>
       </div>
 
-      {/* Content Details */}
       <div className="space-y-2">
         <div className="flex justify-between items-start">
           <div>
             <h3 className="font-bold text-[#202224] text-lg">{item.name}</h3>
-            <p className="text-[#4880FF] font-bold">${item.price.toFixed(2)}</p>
+            <p className="text-start text-[#4880FF] font-bold">${item.price.toFixed(2)}</p>
           </div>
           
-          {/* Favorite Toggle Button */}
           <button className={`p-2 rounded-full transition-colors ${item.isFavorite ? 'text-red-500' : 'text-gray-300 hover:text-red-400'}`}>
             <Heart size={20} fill={item.isFavorite ? "currentColor" : "none"} />
           </button>
         </div>
 
-        {/* Rating Stars */}
         <div className="flex items-center gap-1">
           {[...Array(5)].map((_, i) => (
             <Star 
@@ -73,7 +67,6 @@ const FavoriteCard = ({ item }) => {
           <span className="text-xs text-gray-400 font-medium ml-1">({item.reviews})</span>
         </div>
 
-        {/* Action Button */}
         <button className="w-full mt-4 py-2.5 bg-[#F1F4F9] text-[#202224] text-sm font-bold rounded-xl hover:bg-gray-200 transition-colors">
           Edit Product
         </button>

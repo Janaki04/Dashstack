@@ -34,7 +34,7 @@ const Dashboard = () => {
     <div className="flex min-h-screen bg-gray-50 text-slate-700">
       <main className="flex-1 flex flex-col min-w-0">
         <div className="p-4 lg:p-8 overflow-y-auto">
-          <h2 className="text-2xl font-bold mb-6">Dashboard</h2>
+          <h2 className="text-start text-[#000] text-2xl font-bold mb-6">Dashboard</h2>
           <div className="bg-white p-6 rounded-2xl border mb-8">
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-xl font-bold">Revenue</h3>
@@ -105,7 +105,6 @@ const Dashboard = () => {
                     <ChevronDown className="rotate-90" size={16} />
                  </div>
                  <div className="p-4">
-                    {/* Placeholder for headphone image */}
                     <div className="w-32 h-32 bg-gray-50 rounded-full mb-4 flex items-center justify-center mx-auto">
                         <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=400"/>
                     </div>

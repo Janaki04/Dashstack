@@ -1,4 +1,3 @@
-// Header.jsx
 import { Search, Bell, Menu, ChevronDown } from 'lucide-react';
 
 const Header = ({ onMenuClick }) => (

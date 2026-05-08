@@ -1,18 +1,15 @@
-// Layout.jsx
-import React, { useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import Sidebar from '../CommonComponents/Sidebar';
 import Header from '../CommonComponents/Header';
 
-const Layout = ({ children }) => {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
-
+const Layout = () => {
   return (
-    <div className="flex min-h-screen bg-[#F5F6FA]">
-      <Sidebar isOpen={isSidebarOpen} setIsOpen={setSidebarOpen} />
+    <div className="flex min-h-screen bg-[#F5F6FA] font-sans">
+      <Sidebar />
       <div className="flex-1 flex flex-col min-w-0">
-        <Header onMenuClick={() => setSidebarOpen(true)} />
+        <Header />
         <main className="p-4 lg:p-8 overflow-y-auto">
-          {children}
+          <Outlet /> 
         </main>
       </div>
     </div>

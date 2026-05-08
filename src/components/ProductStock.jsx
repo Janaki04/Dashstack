@@ -12,7 +12,6 @@ const ProductStock = () => {
     { id: 5, name: "Camera", category: "Electronic", price: 420.00, piece: 52, colors: ["#312E81", "#000000", "#881337"], image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=100" },
   ];
 
-  // Search Logic
   const filteredStock = useMemo(() => {
     return initialStock.filter(item => 
       item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -23,9 +22,8 @@ const ProductStock = () => {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center flex-wrap gap-4">
-        <h2 className="text-3xl font-bold text-[#202224]">Product Stock</h2>
+        <h2 className="text-start text-3xl font-bold text-[#202224]">Product Stock</h2>
         
-        {/* Local Search Bar */}
         <div className="relative w-full max-w-xs">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
           <input 
@@ -38,7 +36,6 @@ const ProductStock = () => {
         </div>
       </div>
 
-      {/* Product Table */}
       <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
@@ -93,7 +90,6 @@ const ProductStock = () => {
         </div>
       </div>
 
-      {/* Pagination Footer */}
       <div className="flex justify-between items-center py-2">
         <p className="text-sm text-gray-400 font-medium">Showing 1-{filteredStock.length} of 78</p>
         <div className="flex items-center bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
