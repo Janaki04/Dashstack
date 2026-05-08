@@ -34,7 +34,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
       items: [
         { icon: <Tag size={20}/>, label: "Pricing", path: "/pricing" },
         { icon: <Calendar size={20}/>, label: "Calendar", path: "/calendar" },
-        { icon: <CheckSquare size={20}/>, label: "To-Do", path: "/todoList" },
+        { icon: <CheckSquare size={20}/>, label: "To-Do", path: "/todo-list" },
         { icon: <Contact size={20}/>, label: "Contact", path: "/contact" },
         { icon: <FileText size={20}/>, label: "Invoice", path: "/invoice" },
         { icon: <Component size={20}/>, label: "UI Elements", path: "/ui-elements" },

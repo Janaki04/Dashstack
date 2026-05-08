@@ -9,7 +9,7 @@ import OrderLists from './components/OrderLists';
 import ProductStock from "./components/ProductStock";
 import Calendar from "./components/Calender";
 import Pricing from "./components/Pricing";
-import TodoList from "./components/TodoList";
+import TodoList from "./components/Todolist";
 import Contact from "./components/Contact";
 import Invoice from "./components/Invoice";
 import UIElements from "./components/UIElements";
@@ -33,7 +33,7 @@ function App() {
           <Route path="/ProductStock" element={<ProductStock />} />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/pricing" element={<Pricing />} />
-          <Route path="/todoList" element={<TodoList />} />
+          <Route path="/todo-list" element={<TodoList />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/invoice" element={<Invoice />} />
           <Route path="/ui-elements" element={<UIElements />} />
