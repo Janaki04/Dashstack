@@ -1,22 +1,19 @@
 import React from 'react';
 import logo from "../assets/Logo.png"
-import { Link, useLocation,useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { 
   LayoutDashboard, ShoppingBag, Heart, Mail, ListOrdered, Package, 
   Tag, Calendar, CheckSquare, Contact, FileText, Component, 
   Users, Table as TableIcon, Settings, LogOut, X 
 } from 'lucide-react';
 
-/**
- * @param {boolean} isOpen 
- * @param {function} setIsOpen
- */
 const Sidebar = ({ isOpen, setIsOpen }) => {
   const location = useLocation();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
+    setIsOpen(false); 
     navigate('/'); 
   };
 
@@ -36,8 +33,8 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
       title: "Pages",
       items: [
         { icon: <Tag size={20}/>, label: "Pricing", path: "/pricing" },
-        { icon: <Calendar size={20}/>, label: "Calender", path: "/calendar" },
-        { icon: <CheckSquare size={20}/>, label: "To-Do", path: "/todolist" },
+        { icon: <Calendar size={20}/>, label: "Calendar", path: "/calendar" },
+        { icon: <CheckSquare size={20}/>, label: "To-Do", path: "/todoList" },
         { icon: <Contact size={20}/>, label: "Contact", path: "/contact" },
         { icon: <FileText size={20}/>, label: "Invoice", path: "/invoice" },
         { icon: <Component size={20}/>, label: "UI Elements", path: "/ui-elements" },
@@ -60,11 +57,11 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         fixed inset-y-0 left-0 z-[70] w-64 bg-white border-r border-gray-100
         transform transition-transform duration-300 ease-in-out
         ${isOpen ? 'translate-x-0' : '-translate-x-full'} 
-        lg:relative lg:translate-x-0 flex flex-col
+        lg:relative lg:translate-x-0 flex flex-col h-screen
       `}>
         
-        <div className="p-6 flex justify-between items-center">
-          <img src={logo}/>
+        <div className="p-6 flex justify-between items-center shrink-0">
+          <img src={logo} alt="DashStack Logo" className="h-8 w-auto" />
           <button 
             className="lg:hidden p-1 hover:bg-gray-100 rounded-md text-gray-400" 
             onClick={() => setIsOpen(false)}
@@ -88,7 +85,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                     <Link 
                       key={item.label} 
                       to={item.path}
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => setIsOpen(false)} // Closes mobile sidebar on link click
                       className={`
                         relative flex items-center gap-4 px-4 py-3 rounded-lg font-semibold transition-all duration-200 group
                         ${isActive 
@@ -97,7 +94,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                       `}
                     >
                       {isActive && (
-                        <div className="absolute left-0 top-1/4 bottom-1/4 w-1 bg-white rounded-r-full" />
+                        <div className="absolute left-0 top-1/4 bottom-1/4 w-1.5 bg-white rounded-r-full" />
                       )}
 
                       <span className={`${isActive ? 'text-white' : 'text-gray-400 group-hover:text-[#4880FF]'}`}>
@@ -111,13 +108,22 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
             </div>
           ))}
           
-          <div className="pt-4 mt-4 border-t border-gray-100 space-y-1">
-            <Link to="/settings" className="flex items-center gap-4 px-4 py-3 rounded-lg font-semibold text-[#202224] hover:bg-gray-50 transition-all">
-              <Settings size={20} className="text-gray-400" />
+          <div className="pt-4 mt-4 border-t border-gray-100 space-y-1 shrink-0">
+            <Link 
+              to="/settings" 
+              onClick={() => setIsOpen(false)}
+              className={`flex items-center gap-4 px-4 py-3 rounded-lg font-semibold transition-all 
+                ${location.pathname === '/settings' ? 'bg-[#4880FF] text-white shadow-lg' : 'text-[#202224] hover:bg-gray-50'}`}
+            >
+              <Settings size={20} className={location.pathname === '/settings' ? 'text-white' : 'text-gray-400'} />
               <span className="text-sm">Settings</span>
             </Link>
-            <button onClick={handleLogout} className="w-full flex items-center gap-4 px-4 py-3 rounded-lg font-semibold text-[#202224] hover:bg-red-50 hover:text-red-500 transition-all">
-              <LogOut  size={20} className="text-gray-400 group-hover:text-red-500" />
+            
+            <button 
+              onClick={handleLogout} 
+              className="w-full flex items-center gap-4 px-4 py-3 rounded-lg font-semibold text-[#202224] hover:bg-red-50 hover:text-red-500 transition-all group/logout"
+            >
+              <LogOut size={20} className="text-gray-400 group-hover/logout:text-red-500" />
               <span className="text-sm">Logout</span>
             </button>
           </div>
@@ -125,19 +131,10 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
       </aside>
 
       <style>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #E2E8F0;
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #CBD5E1;
-        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #E2E8F0; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #CBD5E1; }
       `}</style>
     </>
   );
