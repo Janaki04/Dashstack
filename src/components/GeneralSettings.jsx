@@ -33,7 +33,7 @@ const GeneralSettings = () => {
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 mb-12">
           
           <div className="space-y-2">
-            <label className="text-sm font-bold text-gray-400 ml-1">Site Name</label>
+            <label className="flex text-sm font-bold text-gray-400 ml-1">Site Name</label>
             <input 
               type="text" 
               name="siteName"
@@ -44,7 +44,7 @@ const GeneralSettings = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-bold text-gray-400 ml-1">Copy Right</label>
+            <label className="flex text-sm font-bold text-gray-400 ml-1">Copy Right</label>
             <input 
               type="text" 
               name="copyRight"
@@ -55,7 +55,7 @@ const GeneralSettings = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-bold text-gray-400 ml-1">SEO Title</label>
+            <label className="flex text-sm font-bold text-gray-400 ml-1">SEO Title</label>
             <input 
               type="text" 
               name="seoTitle"
@@ -66,7 +66,7 @@ const GeneralSettings = () => {
           </div>
 
           <div className="space-y-2 row-span-2">
-            <label className="text-sm font-bold text-gray-400 ml-1">SEO Description</label>
+            <label className="flex text-sm font-bold text-gray-400 ml-1">SEO Description</label>
             <textarea 
               name="seoDescription"
               value={formData.seoDescription}
@@ -77,7 +77,7 @@ const GeneralSettings = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-bold text-gray-400 ml-1">SEO Keywords</label>
+            <label className="flex text-sm font-bold text-gray-400 ml-1">SEO Keywords</label>
             <input 
               type="text" 
               name="seoKeywords"

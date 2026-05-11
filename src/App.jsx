@@ -17,10 +17,13 @@ import Team from "./components/Team";
 import TablePage from "./components/TablePage";
 import Inbox from "./components/Inbox";
 import GeneralSettings from "./components/GeneralSettings";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
-    <Router>
+<>
+ <Router>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -44,6 +47,13 @@ function App() {
         </Route>
       </Routes>
     </Router>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+      />
+</>
+    
+   
   );
 }
 

@@ -6,12 +6,15 @@ import {
   Tag, Calendar, CheckSquare, Contact, FileText, Component, 
   Users, Table as TableIcon, Settings, LogOut, X 
 } from 'lucide-react';
+import { toast } from 'react-toastify';
+
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    toast.success("Logout Sucessfully")
     localStorage.removeItem('isLoggedIn');
     setIsOpen(false); 
     navigate('/'); 

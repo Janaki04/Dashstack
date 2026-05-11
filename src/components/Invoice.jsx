@@ -1,5 +1,7 @@
 import React from 'react';
 import { Printer, Send } from 'lucide-react';
+import { toast } from 'react-toastify';
+
 
 const Invoice = () => {
   const invoiceData = {
@@ -23,7 +25,6 @@ const Invoice = () => {
 
       <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-8 md:p-16 min-h-[800px] flex flex-col">
         
-        {/* Invoice Header Information */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
           <div className="space-y-3">
             <p className="text-sm font-bold text-gray-400">Invoice From :</p>
@@ -51,7 +52,6 @@ const Invoice = () => {
           </div>
         </div>
 
-        {/* Invoice Table */}
         <div className="flex-1 overflow-x-auto">
           <table className="w-full text-left">
             <thead>
@@ -77,7 +77,6 @@ const Invoice = () => {
           </table>
         </div>
 
-        {/* Total and Actions Section */}
         <div className="mt-12 space-y-12">
           <div className="flex justify-end pr-6">
             <p className="text-lg font-black text-[#202224]">
@@ -89,7 +88,7 @@ const Invoice = () => {
             <button className="p-3 bg-gray-50 border border-gray-100 rounded-xl text-gray-400 hover:bg-gray-100 transition-colors">
               <Printer size={22} />
             </button>
-            <button className="bg-[#4880FF] hover:bg-[#3b6de0] text-white px-10 py-3 rounded-xl font-bold flex items-center gap-6 shadow-lg shadow-blue-100 transition-all">
+            <button onClick={()=>{toast.success("Sent Sucessfully!!")}} className="bg-[#4880FF] hover:bg-[#3b6de0] text-white px-10 py-3 rounded-xl font-bold flex items-center gap-6 shadow-lg shadow-blue-100 transition-all">
               Send
               <Send size={18} className="rotate-[-20deg]" />
             </button>

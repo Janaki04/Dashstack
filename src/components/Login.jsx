@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Check } from 'lucide-react';
 import { useNavigate, Link } from 'react-router-dom';
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -10,16 +11,53 @@ const Login = () => {
   
   const navigate = useNavigate();
 
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+  };
+
   const handleSignIn = (e) => {
     e.preventDefault();
     setError('');
-      if (email && password) {
-        console.log("Login Successful!");
-        localStorage.setItem('isLoggedIn', 'true');
-            navigate("/dashboard")
-      } else {
-        setError("Invalid email or password.");
+
+    if (!email || !password) {
+      const msg = "Please fill in all fields";
+      setError(msg);
+      toast.warn(msg);
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      const msg = "Please enter a valid email address";
+      setError(msg);
+      toast.error(msg);
+      return;
+    }
+
+    if (password.length < 6) {
+      const msg = "Password must be at least 6 characters";
+      setError(msg);
+      toast.error(msg);
+      return;
+    }
+
+    if (email  && password ) {
+      toast.success("Login Successful! Welcome back.");
+      localStorage.setItem('isLoggedIn', 'true');
+      
+      if (rememberMe) {
+        localStorage.setItem('rememberedEmail', email);
       }
+
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 1000);
+    } else {
+      const msg = "Invalid email or password!";
+      setError(msg);
+      toast.error(msg);
+    }
   };
 
   return (
@@ -43,8 +81,7 @@ const Login = () => {
               placeholder="esteban_schiller@gmail.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full px-5 py-4 bg-[#F1F4F9] border border-gray-100 rounded-xl text-sm font-semibold text-[#202224] focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+              className={`w-full px-5 py-4 bg-[#F1F4F9] border ${error && !email ? 'border-red-300' : 'border-gray-100'} rounded-xl text-sm font-semibold text-[#202224] focus:ring-2 focus:ring-blue-100 outline-none transition-all`}
             />
           </div>
 
@@ -58,8 +95,7 @@ const Login = () => {
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full px-5 py-4 bg-[#F1F4F9] border border-gray-100 rounded-xl text-sm font-semibold text-[#202224] focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+              className={`w-full px-5 py-4 bg-[#F1F4F9] border ${error && !password ? 'border-red-300' : 'border-gray-100'} rounded-xl text-sm font-semibold text-[#202224] focus:ring-2 focus:ring-blue-100 outline-none transition-all`}
             />
           </div>
 
@@ -80,7 +116,9 @@ const Login = () => {
           </div>
 
           {error && (
-            <p className="text-red-500 text-xs font-bold text-center bg-red-50 py-2 rounded-lg">{error}</p>
+            <div className="bg-red-50 border border-red-100 p-3 rounded-xl">
+              <p className="text-red-500 text-xs font-bold text-center">{error}</p>
+            </div>
           )}
 
           <button 
