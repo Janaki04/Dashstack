@@ -19,6 +19,7 @@ import Inbox from "./components/Inbox";
 import GeneralSettings from "./components/GeneralSettings";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Profile from './components/Profile';
 
 function App() {
   return (
@@ -44,6 +45,8 @@ function App() {
           <Route path="/table" element={<TablePage />} />
           <Route path="/inbox" element={<Inbox />} />
           <Route path="/settings" element={<GeneralSettings />} />
+          <Route path="/profile" element={<Profile />} />
+
         </Route>
       </Routes>
     </Router>
